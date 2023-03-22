@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room : {{roomvar.name}}</title>
+</head>
+<body>
+    <h1> {{roomvar.name}} </h1>
+    
+    <p>This room is located on the <strong> floor {{roomvar.floor}} </strong> and the room number is <strong>{{roomvar.roomnumber}} </strong>. </p>
+
+    
+    <a href="{% url 'welcomeurl' %}"> Home </a> 
+</body>
+</html>
