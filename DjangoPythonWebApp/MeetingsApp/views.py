@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from datetime import datetime
 
 def welcome(request):
-    return HttpResponse("Welcome to Meeting Planner!")
+    #return HttpResponse("Welcome to Meeting Planner!")
+    return render(request,"website/welcome.html")
 
 
 def date(request):
