@@ -1,7 +1,8 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from datetime import datetime
 from MeetingsApp.models import Meetings,Room
+from django.forms import modelform_factory
 
 def welcome(request):
     #return HttpResponse("Welcome to Meeting Planner!")
@@ -28,3 +29,16 @@ def listrooms(request):
 def roomdetail(request,id):
     room = get_object_or_404(Room, pk=id)
     return render(request, "website/roomdetail.html", {"roomvar": room })
+
+MeetingForm = modelform_factory(Meetings,exclude=[])
+
+def addmeetings(request):
+    if request.method == "POST":
+        form = MeetingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+            #return redirect("/welcome")
+    else:
+        form = MeetingForm()
+    return render(request,"website/newmeetings.html", {"form" :form})

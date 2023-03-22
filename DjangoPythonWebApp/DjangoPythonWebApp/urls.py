@@ -15,15 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MeetingsApp.views import *
+from MeetingsApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', welcome, name='welcomeurl'),
-    path('Date',date),
-    path("About", about),
+    path('welcome',views.welcome),
+    path('', views.welcome, name='welcomeurl'),
+    path('Date',views.date),
+    path("About", views.about),
     #path("meetingView/<int:id>", detail),  # http://127.0.0.1:8000/meetingView/1
-    path("website/<int:id>", detail, name='detailurl'),  #http://127.0.0.1:8000/website/1
-    path("Rooms", listrooms, name='roomurl'),
-    path("Rooms/<int:id>", roomdetail, name='roomdetailurl'),
+    path("website/<int:id>views", views.detail, name='detailurl'),  #http://127.0.0.1:8000/website/1
+    path("Rooms", views.listrooms, name='roomurl'),
+    path("Rooms/<int:id>", views.roomdetail, name='roomdetailurl'),
+    path("NewMeeting", views.addmeetings, name="addmeetingurl")
+    #path('meetings/',include('meetings.urls')),   # will include the urls.py under the folder meetings
 ]

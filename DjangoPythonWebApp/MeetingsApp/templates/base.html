@@ -6,19 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'website/style.css'%}" />
-    <title>Welcome Document</title>
+    <title> {% block title %} {% endblock %}</title>
 </head>
 <body>
-    <p>There are {{num_rooms}} rooms</p>
-<h2> List of Rooms <h2>
-    <ul>
-        {% for room in rooms%}
-        <li>
-            <a href="{% url 'roomdetailurl' room.id %}"> {{room.name}}</a>
-        </li>
-        {% endfor %}
-    </ul>
-
-
+     
+    {% block content %} 
+    {% endblock %}
+    <img src="{% static 'website/calendar.png' %}" width="100px" />
 </body>
 </html>
